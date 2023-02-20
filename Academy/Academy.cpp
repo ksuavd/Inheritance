@@ -262,7 +262,7 @@ int main()
         new Teacher("White", "Walter",1960,9,20,"Chemistry",25),
         new Graduate("Scharader","Hank",1970,06,07,"Crimrnalistic","WW_220",75,80,"How to catch Heizenberg"),
         new Student("Vercetty", "Tomas",1970,05,25,"Crimrnalistic","Vice",90,95),
-         new Teacher("Diaz", "Ricardo",1960,03,03,"Wapons distribution",20)
+        new Teacher("Diaz", "Ricardo",1960,03,03,"Wapons distribution",20)
     };
 
     for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
