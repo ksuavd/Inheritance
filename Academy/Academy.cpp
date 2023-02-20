@@ -53,7 +53,7 @@ public:
     }
     
 // CONSTRUCTORS:
-    Human(HUMAN_TAKE_PARAMETERS)
+     Human(HUMAN_TAKE_PARAMETERS)
     {
         set_last_name(last_name);
         set_first_name(first_name);
@@ -62,15 +62,20 @@ public:
 
     }
 // DESTRUCTOR:
-    virtual ~Human()
+    virtual  ~Human()
     {
         cout << "HDestructor:\t" << this << endl;
     }
  // METODS:
 
-    virtual void info()const
+    virtual std::ostream& info(std::ostream& os)const
     {
-        cout << last_name << " " << first_name << " " << get_age() << endl;
+        return os << last_name << " " << first_name << " " << get_age();
+    }
+
+    std::ostream& operator<<(std::ostream& os, const Human& obj)
+    {
+        return obj.info(os);
     }
 };
 
@@ -144,10 +149,9 @@ public:
         cout << "SDestructor:\t" << this << endl;
     }
     // METODS:
-    void info()const
+    std::ostream& info(std::ostream& os)const
     {
-        Human::info();
-        cout << speciality << " " << group << " " << rating << " " << attendance << endl;
+      return Human::info(os)<<" " << speciality << " " << group << " " << rating << " " << attendance;
     }
 };
 
@@ -187,10 +191,9 @@ public:
     {
         cout << "TDestructor:\t" << this << endl;
     }
-    void info()const
+    std::ostream& info(std::ostream& os)const
     {
-        Human::info();
-        cout << speciality << " " << experience << " " << " лет.\n";
+        return Human::info(os)<<" " << speciality << " " << experience << " " << " лет.\n";
     }
 
 };
@@ -220,10 +223,9 @@ public:
     {
         cout << "GDestructor:\t" << this << endl;
     }
-    void info()const
+    std::ostream& info(std::ostream& os)const
     {
-        Student::info();
-        cout << subject << endl;
+        return Student::info(os)<<" " << subject << endl;
     }
 };
 
@@ -267,7 +269,8 @@ int main()
 
     for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
     {
-        group[i]->info();
+       // group[i]->info();
+        cout << *group [i];
         cout << "\n-------------------------------------\n";
     }
 
