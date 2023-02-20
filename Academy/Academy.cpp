@@ -283,6 +283,7 @@ int main()
         new Student("Vercetty", "Tomas",1970,05,25,"Crimrnalistic","Vice",90,95),
          new Teacher("Diaz", "Ricardo",1960,03,03,"Wapons distribution",20)
     };
+
     cout << "\n-------------------------------------\n";
     for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
     {
