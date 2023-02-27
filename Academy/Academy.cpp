@@ -103,7 +103,8 @@ public:
      }
      virtual std::ifstream& scan(std::ifstream& ifs)
      {
-         ifs >> last_name >> first_name;
+         ifs >> last_name;
+         ifs>>first_name;
          ifs >> birth_date.tm_year; ifs.ignore();
          ifs >> birth_date.tm_mon; ifs.ignore();
              ifs >> birth_date.tm_mday; ifs.ignore();
@@ -120,9 +121,9 @@ std::ofstream& operator<<(std::ofstream& ofs, const Human& obj)
 {
     return obj.info(ofs);
 }
-std::ifstream& operator>>(std::ifstream& ifs, const Human& obj) 
+std::ifstream& operator>>(std::ifstream& ifs,  Human& obj) 
 {
-    return ifs;
+    return obj.scan(ifs);
 }
 
 
@@ -292,7 +293,7 @@ public:
     }
     std::ifstream& scan(std::ifstream& ifs) override
     {
-       
+        Human::scan(ifs);
         char buffer[SPECIALITY_WIDTH + 1] = {};
         ifs.read(buffer, SPECIALITY_WIDTH);
         // удаляем лишние пробелы в конце строки
@@ -313,7 +314,6 @@ public:
         ofs << experience;
         return  ofs;
     }
-
 };
 
 
